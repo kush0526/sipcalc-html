@@ -142,6 +142,11 @@
 
   } */
 
+  /* .b-t1{
+    color: aqua;
+    background: #000;
+  } */
+
   @media(max-width:767px) {
     #sipForm .fifty-layout {
       width: 100%;
@@ -444,8 +449,8 @@
             <div class="col-12 col-md-7 order-1 order-md-0 text p-3 p-md-3">
               <!-- Toggle Button -->
               <div class="toggle-buttons mb-4">
-                <button id="sipButton" class="btn btn-primary btn-toggle button-1 ">SIP</button>
-                <button id="lumpsumButton" class="btn btn-secondary btn-toggle">Lumpsum</button>
+                <button id="sipButton" class="btn btn-primary btn-toggle button-1  b-t1 ">SIP</button>
+                <button id="lumpsumButton" class="btn btn-secondary btn-toggle  b-t1">Lumpsum</button>
               </div>
 
               <div id="sipContainer">
@@ -627,11 +632,19 @@
                 document.querySelector('#sipButton').addEventListener('click', (e) => {
                   document.querySelector('#sipContainer').style.display = 'block'
                   document.querySelector('#lumpsumCalculator').style.display = 'none'
+                  document.getElementById('sipButton').classList.add('btn-primary');
+                  document.getElementById('sipButton').classList.remove('btn-secondary');
+                  document.getElementById('lumpsumButton').classList.remove('btn-primary');
+                  document.getElementById('lumpsumButton').classList.add('btn-secondary');
                 })
 
                 document.querySelector('#lumpsumButton').addEventListener('click', (e) => {
                   document.querySelector('#sipContainer').style.display = 'none'
                   document.querySelector('#lumpsumCalculator').style.display = 'block'
+                  document.getElementById('lumpsumButton').classList.add('btn-primary');
+                  document.getElementById('lumpsumButton').classList.remove('btn-secondary');
+                  document.getElementById('sipButton').classList.remove('btn-primary');
+                  document.getElementById('sipButton').classList.add('btn-secondary');
                 })
 
 
@@ -689,40 +702,40 @@
                   document.getElementById('pageContent_lbltotalEarnings').textContent = Math.round(totalReturn.toFixed(2));
                   document.getElementById('pageContent_lblDepositedAmount').textContent = Math.round((futureValue - totalReturn).toFixed(2));
 
-                  
+
+
+                  // Update the chart with the new values
+
+                  //   updateChart((futureValue - totalReturn).toFixed(2), totalReturn);
+                  // });
+
+                  // // Function to update the chart dynamically
+                  // function updateChart(investedAmount, returns) {
+                  //   sipChart.data.datasets[0].data = [investedAmount, returns];
+                  //   sipChart.update(); // Refresh the chart with new data
+                  // }
+
+
+
+                  // Handle Lump Sum Form Submission
+                  document.getElementById('lumpsumForm').addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    let resultDiv = document.querySelector('#resultpanel');
+                    let lumpSumAmount = parseFloat(document.getElementById('lumpSumAmount').value);
+                    let annualRate = parseFloat(document.getElementById('lumpSumRate').value);
+                    let years = parseInt(document.getElementById('lumpSumYears').value);
+                    let { futureValue, totalReturn } = calculateLumpSum(lumpSumAmount, annualRate, years);
+
+                    document.querySelector('#resultPanel').style.display = 'block';
+                    document.getElementById('pageContent_txtFutureValue').textContent = Math.round(futureValue);
+                    document.getElementById('pageContent_lbltotalEarnings').textContent = Math.round(futureValue);
+                    document.getElementById('pageContent_lblDepositedAmount').textContent = Math.round(futureValue);
+                  });
+
 
                   // Update the chart with the new values
 
                   updateChart((futureValue - totalReturn).toFixed(2), totalReturn);
-                });
-
-                // Function to update the chart dynamically
-                function updateChart(investedAmount, returns) {
-                  sipChart.data.datasets[0].data = [investedAmount, returns];
-                  sipChart.update(); // Refresh the chart with new data
-                }
-
-
-
-                // Handle Lump Sum Form Submission
-                document.getElementById('lumpsumForm').addEventListener('submit', function (event) {
-                  event.preventDefault();
-                  let resultDiv = document.querySelector('#resultpanel');
-                  let lumpSumAmount = parseFloat(document.getElementById('lumpSumAmount').value);
-                  let annualRate = parseFloat(document.getElementById('lumpSumRate').value);
-                  let years = parseInt(document.getElementById('lumpSumYears').value);
-                  let { futureValue, totalReturn } = calculateLumpSum(lumpSumAmount, annualRate, years);
-
-                  document.querySelector('#resultPanel').style.display = 'block';
-                  document.getElementById('pageContent_txtFutureValue').textContent = Math.round(futureValue);
-                  document.getElementById('pageContent_lbltotalEarnings').textContent = Math.round(futureValue);
-                  document.getElementById('pageContent_lblDepositedAmount').textContent = Math.round(futureValue);
-                });
-
-
-                // Update the chart with the new values
-
-                updateChart((futureValue - totalReturn).toFixed(2), totalReturn);
                 });
 
                 // Function to update the chart dynamically
