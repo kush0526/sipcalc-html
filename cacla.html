@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="cacla.css">
+</head>
+<body>
+    <section class="why_section layout_padding sip-4" >
+        <div class="container">
+          <div class="heading_container heading_center  sip-heding">
+            <h2>
+              SIP <span>Calculator</span>
+            </h2>
+          </div>
+          <div class="why_container">
+            <div style="background-color: #efefef;border-radius: 10px;"
+              class="container p-md-5 p-2 mt-md-2 calculatorinner">
+    
+      <!-- <button class="button-1" >Sip</button>   -->
+      <!-- <button>kush</button>   -->
+    
+    
+      <div class="row p-0 p-md-5" style="border: 1px solid #333333;border-radius: 10px;">
+                <div class="col-12 col-md-7 order-1 order-md-0 text">
+                  <p>Wish to invest periodically? Calculate the amount of wealth that you can generate using our SIP
+                    Calculator.</p>
+                  <hr />
+                  <form id="sipForm">
+                    <div class="fifty-layout">
+                      <label for="depositType">Frequency of Investment:</label>
+                      <select class="form-control" id="depositType">
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                      </select><br><br>
+                    </div>
+    
+                    <div class="fifty-layout">
+                      <label for="investmentAmount">Investment Amount (₹):</label>
+                      <input class="form-control" type="number" id="investmentAmount" required><br><br>
+                    </div>
+                    <div class="fifty-layout">
+                      <label for="annualRate">Expected rate of return(P.A)<span style="color: red;">*</span>(%):</label>
+    
+                      <input class="form-control" type="text" step="0.01" id="annualRate" required><br><br>
+                    </div>
+                    <div class="fifty-layout">
+                      <label for="years">Investment Duration (Years):</label>
+                      <input class="form-control" type="number" id="years" required><br><br>
+                    </div>
+                    <button class="btn btn-primary btn btn-1" type="submit">Calculate</button>
+                  </form>
+    
+                  <hr>
+    
+                  <div id="resultPanel" class="resultpanel">
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <h5 class="txtsize">Your Future Value:
+                          <strong>₹&nbsp;
+                            <span id="pageContent_txtFutureValue" class="txtsize Currency"></span></strong>
+                          <strong>
+                            <span id="pageContent_lblvalue" class="txtsize"></span></strong>
+                        </h5>
+                      </div>
+                      <div class="col-md-12">
+                        <h5 class="txtsize">Total Earnings:
+                          <strong>₹&nbsp;<span id="pageContent_lbltotalEarnings" class="txtsize Currency"></span></strong>
+                          <strong>
+                            <span id="pageContent_lblTotalEarning" class="txtsize"></span></strong>
+                        </h5>
+                      </div>
+                      <div class="col-md-12">
+                        <h5 class="txtsize">Total Amount Deposited:
+                          <strong>₹&nbsp;<span id="pageContent_lblDepositedAmount" class="txtsize Currency"></span></strong>
+                          <strong>
+                            <span id="pageContent_lblDeposit" class="txtsize"></span></strong>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+    
+      <script>
+                    document.querySelector('#resultPanel').style.display = 'none'
+                    let percentageVal = '';
+                    // Handle form submission
+                    document.querySelector('#annualRate').addEventListener('input', (e) => {
+                      percentageVal = e.target.value + '%';
+                    })
+    
+                    document.querySelector('#annualRate').addEventListener('focusout', (e) => {
+                      e.target.value = percentageVal
+                    })
+    
+                    // SIP Calculation Logic
+                    function calculateSIP(investmentAmount, annualRate, years, depositType) {
+                      // Convert annual rate to monthly rate if deposit type is monthly
+                      let rate, totalPeriods;
+    
+                      if (depositType === 'monthly') {
+                        rate = annualRate / (12 * 100); // Monthly rate
+                        totalPeriods = years * 12; // Convert years to months
+                      } else {
+                        rate = annualRate / 100; // Yearly rate
+                        totalPeriods = years; // Periods are in years
+                      }
+    
+                      // Apply SIP formula to calculate future value
+                      let futureValue = investmentAmount * (((1 + rate) ** totalPeriods - 1) / rate) * (1 + rate);
+    
+                      // Calculate the total investment made
+                      let totalInvestment = depositType === 'monthly' ? investmentAmount * totalPeriods : investmentAmount * years;
+    
+                      // Calculate the total return (Future Value - Total Investment)
+                      let totalReturn = futureValue - totalInvestment;
+                      return { futureValue, totalReturn };
+                    }
+    
+                    // Handle form submission
+                    document.getElementById('sipForm').addEventListener('submit', function (event) {
+                        event.preventDefault(); // Prevent page refresh
+    
+                        // Get form inputs
+                        let depositType = document.getElementById('depositType').value;
+                        let investmentAmount = parseFloat(document.getElementById('investmentAmount').value);
+                        let annualRate = parseFloat(document.getElementById('annualRate').value);
+                        let years = parseInt(document.getElementById('years').value);
+    
+                        // Calculate the future value and total return
+                        let { futureValue, totalReturn } = calculateSIP(investmentAmount, annualRate, years, depositType);
+    
+                        // Display the results
+                        document.getElementById('pageContent_txtFutureValue').textContent = futureValue.toFixed(2);
+                        document.getElementById('pageContent_lbltotalEarnings').textContent = totalReturn.toFixed(2);
+                        document.getElementById('pageContent_lblDepositedAmount').textContent = (futureValue - totalReturn).toFixed(2);
+    
+                        updateChart();
+                    });
+    
+                    // Assuming you have a global variable for the chart
+                    var sipChart; // Declare globally to reference inside updateChart
+    
+                    // Create the chart once the page loads
+                    document.addEventListener('DOMContentLoaded', function () {
+                      var ctx = document.getElementById('sipChart').getContext('2d');
+                      sipChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                          labels: ['Invested Amount', 'Est. Returns'],
+                          datasets: [{
+                            data: [0, 0], // Initial values, updated later
+                            backgroundColor: ['#00204a', '#ffffff'], // Blue and white
+                            borderWidth: 1
+                          }]
+                        },
+                        options: {
+                          responsive: true,
+                          cutoutPercentage: 100, // Doughnut hole in the middle
+                          legend: {
+                            position: 'bottom'
+                          }
+                        },
+                        tooltips: {
+                          bodyFontSize: 20, // Increase font size here
+                          titleFontSize: 16 // You can increase the title font size as well if needed
+                        }
+                      });
+                    });
+    
+    
+                    document.getElementById('sipForm').addEventListener('submit', function (event) {
+                      event.preventDefault(); // Prevent page refresh
+    
+                      document.querySelector('#sipChart').style.display = 'block'
+                      document.querySelector('.imgsize').style.display = 'none'
+                      document.querySelector('#resultPanel').style.display = 'block'
+    
+    
+                      // Get form inputs
+                      let depositType = document.getElementById('depositType').value;
+                      let investmentAmount = parseFloat(document.getElementById('investmentAmount').value);
+                      let annualRate = parseFloat(document.getElementById('annualRate').value);
+                      let years = parseInt(document.getElementById('years').value);
+    
+                      // Calculate the future value and total return
+                      let { futureValue, totalReturn } = calculateSIP(investmentAmount, annualRate, years, depositType);
+    
+                      // Display the results
+                      document.getElementById('pageContent_txtFutureValue').textContent = futureValue.toFixed(2);
+                      document.getElementById('pageContent_lbltotalEarnings').textContent = totalReturn.toFixed(2);
+                      document.getElementById('pageContent_lblDepositedAmount').textContent = (futureValue - totalReturn).toFixed(2);
+    
+                      // Update the chart with the new values
+    
+                      updateChart((futureValue - totalReturn).toFixed(2), totalReturn);
+                    });
+    
+                    // Function to update the chart dynamically
+                    function updateChart(investedAmount, returns) {
+                      sipChart.data.datasets[0].data = [investedAmount, returns];
+                      sipChart.update(); // Refresh the chart with new data
+                    }
+                  </script>
+                </div>
+                <div class="col-12 col-md-5 order-0 order-md-1">
+                  <canvas style="display: none;" id="sipChart" width="200" height="200"></canvas>
+    
+                  <img src="https://placehold.co/400x400?text=Your+Ad+Here" class="img-fluid imgsize" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        var ctx = document.getElementById('sipChart').getContext('2d');
+        var canvas = document.getElementById('sipChart');
+
+        // Set size dynamically
+        // canvas.width = 300;  // Set desired width
+        // canvas.height = 300; // Set desired height
+
+        var sipChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Invested amount', 'Est. returns'],
+                datasets: [{
+                    data: [50, 50], // Set initial values (can be adjusted dynamically)
+                    backgroundColor: ['#1D2FD6', '#4756E1'], // Colors defined
+                    borderWidth: 0  
+                }]
+            },
+            options: {
+                responsive: true,
+                cutoutPercentage: 70, // Creates the doughnut hole in the middle
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        });
+
+
+
+
+    </script>
+
+
+    
+
+<!-- end why section -->
+
+
+<style>
+    .bg-primary-50 {
+        background-color: #000000;
+    }
+
+    .c-white {
+        color: #ffffff;
+    }
+
+    .flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    .flex-container {
+        display: flex;
+    }
+
+    .flex-align-center {
+        align-items: center;
+    }
+
+    .flex-container {
+        display: flex;
+    }
+
+    .border1 {
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    .br1 {
+        border-radius: 1rem;
+    }
+
+    .p2 {
+        padding: 2rem;
+    }
+
+    .p5 {
+        padding: 5rem;
+    }
+
+    .br05 {
+        border-radius: 0.5rem;
+    }
+
+    .bg-1 {
+        background-color: #01FF66;
+    }
+
+    .fw700 {
+        font-weight: 700;
+    }
+
+    .c-primary {
+        color: #000000;
+    }
+
+    .pr15 {
+        padding-right: 1.5rem;
+    }
+
+    .pl15 {
+        padding-left: 1.5rem;
+    }
+
+    .p1 {
+        padding: 1rem;
+    }
+
+    .cta p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    .textblack {
+        color: #000000 !important;
+    }
+
+    @media (max-width: 600px) {
+        .footer .cta {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .flex-container {
+            flex-direction: column;
+        }
+
+        .footer .cta img {
+            width: 40%;
+        }
+
+        .footer .cta {
+            flex-direction: column;
+        }
+
+        .p5 {
+            padding: 0rem;
+        }
+
+        .pl125 {
+            padding-left: 1.25rem
+        }
+
+        .footer .cta .col-9 p {
+            margin-bottom: 2rem;
+        }
+
+        .pr15 {
+            padding-right: 1.5rem;
+        }
+
+        .pl15 {
+            padding-left: 1.5rem;
+        }
+
+        .p1 {
+            padding: 1rem;
+        }
+
+        .text-nounder {
+            text-decoration: none;
+        }
+
+        .cta h4 {
+            font-size: 1.25rem !important;
+            font-weight: 600;
+        }
+
+        .cta p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        .br05 {
+            border-radius: 0.5rem;
+        }
+    }
+
+    #sipForm {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .fifty-layout {
+        width: 48%;
+    }
+
+</style>
+
+
+
+</body>
+</html>

@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="">
+
+  <title> SIP Calculator </title>
+
+  <!-- //// AOS //////     -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<style>
+  #sipForm {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  #sipForm .fifty-layout {
+    width: 49%;
+  }
+
+  .btn.btn-primary {
+    /* display: inline-block; */
+    /* padding: 5px 10px; */
+    background-color: blue;
+    /* color: #ffffff; */
+    /* border-radius: 20px; */
+    /* -webkit-transition: all 0.3s; */
+    /* transition: all 0.3s; */
+    border: none;
+    /* margin-top: 15px; */
+  }
+
+  span.txtsize {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+
+  }
+
+  .sip-heding h2 {
+    font-size: 40px;
+    margin: 0px 0 20px 0;
+  }
+
+  .slider_section .calculate-1 p {
+    font-size: 16px;
+    word-spacing: 2px;
+
+  }
+
+  .slider_section .calculate-1 .btn-5 {
+
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    font-size: 15px;
+    /* color: black !important; */
+    transition: all 0.5s ease-in !important;
+  }
+
+  .slider_section .calculate-1 .btn-5:hover {
+    border-radius: 20px !important;
+    box-shadow: 0px 5px 0px black;
+
+  }
+
+  .about-1 h2 {
+    font-size: 45px;
+  }
+
+  .about-1 .box-1 h3 {
+    font-size: 30px;
+  }
+
+  .about-1 .box-1 p {
+    font-size: 16px;
+    word-spacing: 2px;
+  }
+
+  .about-1 hr {
+    background: gray;
+  }
+
+  .our-servicer h2 {
+    font-size: 40px;
+
+  }
+
+  .calcu .text-1 {
+    font-weight: 500;
+    font-size: 20px;
+
+  }
+
+  /* 
+  .button-1{
+    background: #00bbf0;
+
+  } */
+
+  @media(max-width:767px) {
+    #sipForm .fifty-layout {
+      width: 100%;
+    }
+  }
+</style>
+
+<body>
+  <div class="hero_area">
+
+    <div class="hero_bg_box">
+      <div class="bg_img_box">
+        <img src="images/hero-bg.png" alt="">
+      </div>
+    </div>
+
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              SIP Calculator
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="service.html">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact us.html">Contact us</a>
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel" data-aos="fade-up">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-6 ">
+                  <div class="detail-box calculate-1">
+                    <h1>
+                      Planning your financial future <br> has never been easier.
+                      <!-- Plan Your Future<br> with Confidence! -->
+                    </h1>
+                    <p>
+                      Our Systematic Investment Plan (SIP) calculator helps you estimate the returns on your mutual fund
+                      investments. Simply enter your investment details, and get a clear picture of how your money can
+                      grow over time.
+
+
+                    </p>
+                    <div class="btn-box">
+                      <a href="#sip calculate" class="btn1 btn-5">
+                        calculate now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="images/finance.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators d-none">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+          <li data-target="#customCarousel1" data-slide-to="2"></li>
+        </ol>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- why section -->
+
+  <!-- <a id="sip calculate"></a>
+  <div class="why_container" data-aos="fade-up">
+
+    <div class="heading_container heading_center  sip-heding">
+      <h2>
+        SIP <span>Calculator</span>
+      </h2>
+    </div>
+
+    <div style="background-color: #efefef; border-radius: 10px;" class="container p-md-5 p-2 mt-md-2 calculatorinner">
+      <div class="row p-0 p-md-5" style="border: 1px solid #333333; border-radius: 10px;">
+        <div class="col-12 col-md-7 order-1 order-md-0 text">
+          <!-- Toggle Button -->
+  <!-- <div class="toggle-buttons mb-4">
+            <button id="sipButton" class="btn btn-primary btn-toggle button-1 ">SIP</button>
+            <button id="lumpsumButton" class="btn btn-secondary btn-toggle">Lumpsum</button>
+          </div> -->
+
+  <!-- SIP Calculator Form -->
+  <!-- <div id="sipCalculator">
+            <p>Wish to invest periodically? Calculate the amount of wealth that you can generate using our SIP
+              Calculator.</p>
+            <hr />
+            <form id="sipForm">
+              <div class="fifty-layout">
+                <label for="depositType">Frequency of Investment:</label>
+                <select class="form-control" id="depositType">
+                  <option value="monthly">Monthly</option>
+                  <option value="yearly">Yearly</option>
+                </select><br><br>
+              </div>
+
+              <div class="fifty-layout">
+                <label for="investmentAmount">Investment Amount (₹):</label>
+                <input class="form-control" type="number" id="investmentAmount" required><br><br>
+              </div>
+              <div class="fifty-layout">
+                <label for="annualRate">Expected rate of return (P.A)<span style="color: red;">*</span>(%):</label>
+                <input class="form-control" type="text" step="0.01" id="annualRate" required><br><br>
+              </div>
+              <div class="fifty-layout">
+                <label for="years">Investment Duration (Years):</label>
+                <input class="form-control" type="number" id="years" required><br><br>
+              </div>
+              <button class="btn btn-primary btn-1" type="submit">Calculate</button>
+            </form>
+          </div>
+
+          <!-- Lump Sum Calculator Form -->
+  <!-- <div id="lumpsumCalculator" style="display:none;">
+            <p>Want to invest a one-time amount? Calculate the future value using our Lump Sum Calculator.</p>
+            <hr />
+            <form id="lumpsumForm">
+              <div class="fifty-layout">
+                <label for="lumpSumAmount">Lump Sum Investment Amount (₹):</label>
+                <input class="form-control" type="number" id="lumpSumAmount" required><br><br>
+              </div>
+              <div class="fifty-layout">
+                <label for="lumpSumRate">Expected rate of return (P.A)<span style="color: red;">*</span>(%):</label>
+                <input class="form-control" type="text" step="0.01" id="lumpSumRate" required><br><br>
+              </div>
+              <div class="fifty-layout">
+                <label for="lumpSumYears">Investment Duration (Years):</label>
+                <input class="form-control" type="number" id="lumpSumYears" required><br><br>
+              </div>
+              <button class="btn btn-primary btn-1" type="submit">Calculate</button>
+            </form>
+          </div>
+
+          <hr /> -->
+
+  <!-- Result Panel -->
+  <!-- <div id="resultPanel" class="resultpanel">
+            <div class="form-group row calcu " >
+              <div class="col-md-12">
+                <h5 class="txtsize">Your Future Value:
+                  <strong>₹&nbsp;<span id="pageContent_txtFutureValue" class="txtsize Currency text-1"></span></strong>
+                </h5>
+              </div>
+              <div class="col-md-12">
+                <h5 class="txtsize">Total Earnings:
+                  <strong>₹&nbsp;<span id="pageContent_lbltotalEarnings" class="txtsize Currency text-1"></span></strong>
+                </h5>
+              </div>
+              <div class="col-md-12">
+                <h5 class="txtsize">Total Amount Deposited:
+                  <strong>₹&nbsp;<span id="pageContent_lblDepositedAmount" class="txtsize Currency text-1"></span></strong>
+                </h5>
+              </div>
+            </div>
+          </div>  -->
+
+  <!-- <script>
+            // Toggle between SIP and Lump Sum Calculator
+            document.getElementById('sipButton').addEventListener('click', function () {
+              document.getElementById('sipCalculator').style.display = 'block';
+              document.getElementById('lumpsumCalculator').style.display = 'none';
+              document.getElementById('sipButton').classList.add('btn-primary');
+              document.getElementById('sipButton').classList.remove('btn-secondary');
+              document.getElementById('lumpsumButton').classList.remove('btn-primary');
+              document.getElementById('lumpsumButton').classList.add('btn-secondary');
+            });
+
+            document.getElementById('lumpsumButton').addEventListener('click', function () {
+              document.getElementById('sipCalculator').style.display = 'none';
+              document.getElementById('lumpsumCalculator').style.display = 'block';
+              document.getElementById('lumpsumButton').classList.add('btn-primary');
+              document.getElementById('lumpsumButton').classList.remove('btn-secondary');
+              document.getElementById('sipButton').classList.remove('btn-primary');
+              document.getElementById('sipButton').classList.add('btn-secondary');
+            });
+
+            // SIP Calculation Logic
+            function calculateSIP(investmentAmount, annualRate, years, depositType) {
+              let rate, totalPeriods;
+              if (depositType === 'monthly') {
+                rate = annualRate / (12 * 100);
+                totalPeriods = years * 12;
+              } else {
+                rate = annualRate / 100;
+                totalPeriods = years;
+              }
+              let futureValue = investmentAmount * (((1 + rate) ** totalPeriods - 1) / rate) * (1 + rate);
+              let totalInvestment = depositType === 'monthly' ? investmentAmount * totalPeriods : investmentAmount * years;
+              let totalReturn = futureValue - totalInvestment;
+              return { futureValue, totalReturn };
+            }
+
+            // Lump Sum Calculation Logic
+            function calculateLumpSum(lumpSumAmount, annualRate, years) {
+              let rate = annualRate / 100;
+              let futureValue = lumpSumAmount * (1 + rate) ** years;
+              let totalReturn = futureValue - lumpSumAmount;
+              return { futureValue, totalReturn };
+            }
+
+            document.querySelector('#resultPanel').style.display = 'none';
+
+            // Handle SIP Form Submission
+            document.getElementById('sipForm').addEventListener('submit', function (event) {
+              event.preventDefault();
+
+              let resultDiv = document.querySelector('#resultPanel');
+              let depositType = document.getElementById('depositType').value;
+              let investmentAmount = parseFloat(document.getElementById('investmentAmount').value);
+              let annualRate = parseFloat(document.getElementById('annualRate').value);
+              let years = parseInt(document.getElementById('years').value);
+              let { futureValue, totalReturn } = calculateSIP(investmentAmount, annualRate, years, depositType);
+
+              document.querySelector('#resultPanel').style.display = 'block';
+              document.getElementById('pageContent_txtFutureValue').textContent = Math.round(futureValue.toFixed(2));
+              document.getElementById('pageContent_lbltotalEarnings').textContent = Math.round(totalReturn.toFixed(2));
+              document.getElementById('pageContent_lblDepositedAmount').textContent = Math.round((futureValue - totalReturn).toFixed(2));
+            });
+
+            // Handle Lump Sum Form Submission
+            document.getElementById('lumpsumForm').addEventListener('submit', function (event) {
+              event.preventDefault();
+              let resultDiv = document.querySelector('#resultpanel');
+              let lumpSumAmount = parseFloat(document.getElementById('lumpSumAmount').value);
+              let annualRate = parseFloat(document.getElementById('lumpSumRate').value);
+              let years = parseInt(document.getElementById('lumpSumYears').value);
+              let { futureValue, totalReturn } = calculateLumpSum(lumpSumAmount, annualRate, years);
+
+              document.querySelector('#resultPanel').style.display = 'block';
+              document.getElementById('pageContent_txtFutureValue').textContent = Math.round(futureValue);
+              document.getElementById('pageContent_lbltotalEarnings').textContent = Math.round(futureValue);
+              document.getElementById('pageContent_lblDepositedAmount').textContent = Math.round(futureValue);
+            });
+          </script>
+        </div>
+
+        <div class="col-12 col-md-5 order-0 order-md-1">
+          <canvas style="display: none;" id="sipChart" width="200" height="200"></canvas>
+          <img src="https://placehold.co/400x400?text=Your+Ad+Here" class="img-fluid imgsize" />
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <a id="sip calculate"></a>
+  <section class="why_section layout_padding sip-4">
+    <div class="container">
+      <div class="heading_container heading_center  sip-heding">
+        <h2>
+          SIP <span>Calculator</span>
+        </h2>
+      </div>
+      <div class="why_container">
+        <div style="background-color: #efefef;border-radius: 10px;"
+          class="container p-md-5 p-2 mt-md-2 calculatorinner">
+
+
+
+
+          <div class="row p-0 p-md-5" style="border: 1px solid #333333;border-radius: 10px;">
+            <div class="col-12 col-md-7 order-1 order-md-0 text p-3 p-md-3">
+              <!-- Toggle Button -->
+              <div class="toggle-buttons mb-4">
+                <button id="sipButton" class="btn btn-primary btn-toggle button-1 ">SIP</button>
+                <button id="lumpsumButton" class="btn btn-secondary btn-toggle">Lumpsum</button>
+              </div>
+
+              <div id="sipContainer">
+
+
+                <p>Wish to invest periodically? Calculate the amount of wealth that you can generate using our SIP
+                  Calculator.</p>
+                <hr />
+                <form id="sipForm">
+                  <div class="fifty-layout">
+                    <label for="depositType">Frequency of Investment:</label>
+                    <select class="form-control" id="depositType">
+                      <option value="monthly">Monthly</option>
+                      <option value="yearly">Yearly</option>
+                    </select><br><br>
+                  </div>
+
+                  <div class="fifty-layout">
+                    <label for="investmentAmount">Investment Amount (₹):</label>
+                    <input class="form-control" type="number" id="investmentAmount" required><br><br>
+                  </div>
+                  <div class="fifty-layout">
+                    <label for="annualRate">Expected rate of return(P.A)<span style="color: red;">*</span>(%):</label>
+
+                    <input class="form-control" type="text" step="0.01" id="annualRate" required><br><br>
+                  </div>
+                  <div class="fifty-layout">
+                    <label for="years">Investment Duration (Years):</label>
+                    <input class="form-control" type="number" id="years" required><br><br>
+                  </div>
+                  <button class="btn btn-primary btn btn-1" type="submit">Calculate</button>
+                </form>
+
+              </div>
+
+
+
+              <div id="resultPanel" class="resultpanel">
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <h5 class="txtsize">Your Future Value:
+                      <strong>₹&nbsp;
+                        <span id="pageContent_txtFutureValue" class="txtsize Currency"></span></strong>
+                      <strong>
+                        <span id="pageContent_lblvalue" class="txtsize"></span></strong>
+                    </h5>
+                  </div>
+                  <div class="col-md-12">
+                    <h5 class="txtsize">Total Earnings:
+                      <strong>₹&nbsp;<span id="pageContent_lbltotalEarnings" class="txtsize Currency"></span></strong>
+                      <strong>
+                        <span id="pageContent_lblTotalEarning" class="txtsize"></span></strong>
+                    </h5>
+                  </div>
+                  <div class="col-md-12">
+                    <h5 class="txtsize">Total Amount Deposited:
+                      <strong>₹&nbsp;<span id="pageContent_lblDepositedAmount" class="txtsize Currency"></span></strong>
+                      <strong>
+                        <span id="pageContent_lblDeposit" class="txtsize"></span></strong>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Lump Sum Calculator Form -->
+              <div id="lumpsumCalculator" style="display:none;">
+                <p>Want to invest a one-time amount? Calculate the future value using our Lump Sum Calculator.</p>
+                <hr />
+                <form id="lumpsumForm">
+                  <div class="fifty-layout">
+                    <label for="lumpSumAmount">Lump Sum Investment Amount (₹):</label>
+                    <input class="form-control" type="number" id="lumpSumAmount" required><br><br>
+                  </div>
+                  <div class="fifty-layout">
+                    <label for="lumpSumRate">Expected rate of return (P.A)<span style="color: red;">*</span>(%):</label>
+                    <input class="form-control" type="text" step="0.01" id="lumpSumRate" required><br><br>
+                  </div>
+                  <div class="fifty-layout">
+                    <label for="lumpSumYears">Investment Duration (Years):</label>
+                    <input class="form-control" type="number" id="lumpSumYears" required><br><br>
+                  </div>
+                  <button class="btn btn-primary btn-1" type="submit">Calculate</button>
+                </form>
+              </div>
+
+
+
+
+              <script>
+                document.querySelector('#resultPanel').style.display = 'none'
+                let percentageVal = '';
+                // Handle form submission
+                document.querySelector('#annualRate').addEventListener('input', (e) => {
+                  percentageVal = e.target.value + '%';
+                })
+
+                document.querySelector('#annualRate').addEventListener('focusout', (e) => {
+                  e.target.value = percentageVal
+                })
+
+                // SIP Calculation Logic
+                function calculateSIP(investmentAmount, annualRate, years, depositType) {
+                  // Convert annual rate to monthly rate if deposit type is monthly
+                  let rate, totalPeriods;
+
+                  if (depositType === 'monthly') {
+                    rate = annualRate / (12 * 100); // Monthly rate
+                    totalPeriods = years * 12; // Convert years to months
+                  } else {
+                    rate = annualRate / 100; // Yearly rate
+                    totalPeriods = years; // Periods are in years
+                  }
+
+                  // Apply SIP formula to calculate future value
+                  let futureValue = investmentAmount * (((1 + rate) ** totalPeriods - 1) / rate) * (1 + rate);
+
+                  // Calculate the total investment made
+                  let totalInvestment = depositType === 'monthly' ? investmentAmount * totalPeriods : investmentAmount * years;
+
+                  // Calculate the total return (Future Value - Total Investment)
+                  let totalReturn = futureValue - totalInvestment;
+                  return { futureValue, totalReturn };
+                }
+
+                // Handle form submission
+                // document.getElementById('sipForm').addEventListener('submit', function (event) {
+                //     event.preventDefault(); // Prevent page refresh
+
+                //     // Get form inputs
+                //     let depositType = document.getElementById('depositType').value;
+                //     let investmentAmount = parseFloat(document.getElementById('investmentAmount').value);
+                //     let annualRate = parseFloat(document.getElementById('annualRate').value);
+                //     let years = parseInt(document.getElementById('years').value);
+
+                //     // Calculate the future value and total return
+                //     let { futureValue, totalReturn } = calculateSIP(investmentAmount, annualRate, years, depositType);
+
+                //     // Display the results
+                //     document.getElementById('pageContent_txtFutureValue').textContent = futureValue.toFixed(2);
+                //     document.getElementById('pageContent_lbltotalEarnings').textContent = totalReturn.toFixed(2);
+                //     document.getElementById('pageContent_lblDepositedAmount').textContent = (futureValue - totalReturn).toFixed(2);
+
+                //     updateChart();
+                // });
+
+                // Assuming you have a global variable for the chart
+                var sipChart; // Declare globally to reference inside updateChart
+
+                // Create the chart once the page loads
+                document.addEventListener('DOMContentLoaded', function () {
+                  var ctx = document.getElementById('sipChart').getContext('2d');
+                  sipChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                      labels: ['Invested Amount', 'Est. Returns'],
+                      datasets: [{
+                        data: [0, 0], // Initial values, updated later
+                        backgroundColor: ['#00204a', '#ffffff'], // Blue and white
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      responsive: true,
+                      cutoutPercentage: 100, // Doughnut hole in the middle
+                      legend: {
+                        position: 'bottom'
+                      }
+                    },
+                    tooltips: {
+                      bodyFontSize: 20, // Increase font size here
+                      titleFontSize: 16 // You can increase the title font size as well if needed
+                    }
+                  });
+                });
+
+
+                console.log(document.querySelector('#sipButton'))
+                console.log(document.querySelector('#lumpsumButton'))
+
+                document.querySelector('#sipButton').addEventListener('click', (e) => {
+                  document.querySelector('#sipContainer').style.display = 'block'
+                  document.querySelector('#lumpsumCalculator').style.display = 'none'
+                })
+
+                document.querySelector('#lumpsumButton').addEventListener('click', (e) => {
+                  document.querySelector('#sipContainer').style.display = 'none'
+                  document.querySelector('#lumpsumCalculator').style.display = 'block'
+                })
+
+
+                document.getElementById('sipForm').addEventListener('submit', function (event) {
+                  event.preventDefault(); // Prevent page refresh
+
+                  document.querySelector('#sipChart').style.display = 'block'
+                  document.querySelector('.imgsize').style.display = 'none'
+                  document.querySelector('.fullWidthAdset').classList.remove('d-none')
+
+                  document.querySelector('#resultPanel').style.display = 'block'
+
+                  // Toggle between SIP and Lump Sum Calculator
+                  document.getElementById('sipButton').addEventListener('click', function () {
+                    console.log("reached")
+
+                    document.getElementById('sipCalculator').style.display = 'block';
+                    document.getElementById('lumpsumCalculator').style.display = 'none';
+                    document.getElementById('sipButton').classList.add('btn-primary');
+                    document.getElementById('sipButton').classList.remove('btn-secondary');
+                    document.getElementById('lumpsumButton').classList.remove('btn-primary');
+                    document.getElementById('lumpsumButton').classList.add('btn-secondary');
+                  });
+
+
+                  document.getElementById('lumpsumButton').addEventListener('click', function () {
+                    console.log("reached")
+                    document.getElementById('sipCalculator').style.display = 'none';
+                    document.getElementById('lumpsumCalculator').style.display = 'block';
+                    document.getElementById('lumpsumButton').classList.add('btn-primary');
+                    document.getElementById('lumpsumButton').classList.remove('btn-secondary');
+                    document.getElementById('sipButton').classList.remove('btn-primary');
+                    document.getElementById('sipButton').classList.add('btn-secondary');
+                  });
+
+                  // Lump Sum Calculation Logic
+                  function calculateLumpSum(lumpSumAmount, annualRate, years) {
+                    let rate = annualRate / 100;
+                    let futureValue = lumpSumAmount * (1 + rate) ** years;
+                    let totalReturn = futureValue - lumpSumAmount;
+                    return { futureValue, totalReturn };
+                  }
+
+                  // Get form inputs
+                  let depositType = document.getElementById('depositType').value;
+                  let investmentAmount = parseFloat(document.getElementById('investmentAmount').value);
+                  let annualRate = parseFloat(document.getElementById('annualRate').value);
+                  let years = parseInt(document.getElementById('years').value);
+
+                  // Calculate the future value and total return
+                  let { futureValue, totalReturn } = calculateSIP(investmentAmount, annualRate, years, depositType);
+
+                  // sip Display the results
+                  document.getElementById('pageContent_txtFutureValue').textContent = Math.round(futureValue.toFixed(2));
+                  document.getElementById('pageContent_lbltotalEarnings').textContent = Math.round(totalReturn.toFixed(2));
+                  document.getElementById('pageContent_lblDepositedAmount').textContent = Math.round((futureValue - totalReturn).toFixed(2));
+
+                  
+
+                  // Update the chart with the new values
+
+                  updateChart((futureValue - totalReturn).toFixed(2), totalReturn);
+                });
+
+                // Function to update the chart dynamically
+                function updateChart(investedAmount, returns) {
+                  sipChart.data.datasets[0].data = [investedAmount, returns];
+                  sipChart.update(); // Refresh the chart with new data
+                }
+
+
+
+                // Handle Lump Sum Form Submission
+                document.getElementById('lumpsumForm').addEventListener('submit', function (event) {
+                  event.preventDefault();
+                  let resultDiv = document.querySelector('#resultpanel');
+                  let lumpSumAmount = parseFloat(document.getElementById('lumpSumAmount').value);
+                  let annualRate = parseFloat(document.getElementById('lumpSumRate').value);
+                  let years = parseInt(document.getElementById('lumpSumYears').value);
+                  let { futureValue, totalReturn } = calculateLumpSum(lumpSumAmount, annualRate, years);
+
+                  document.querySelector('#resultPanel').style.display = 'block';
+                  document.getElementById('pageContent_txtFutureValue').textContent = Math.round(futureValue);
+                  document.getElementById('pageContent_lbltotalEarnings').textContent = Math.round(futureValue);
+                  document.getElementById('pageContent_lblDepositedAmount').textContent = Math.round(futureValue);
+                });
+
+
+                // Update the chart with the new values
+
+                updateChart((futureValue - totalReturn).toFixed(2), totalReturn);
+                });
+
+                // Function to update the chart dynamically
+                function updateChart(investedAmount, returns) {
+                  sipChart.data.datasets[0].data = [investedAmount, returns];
+                  sipChart.update(); // Refresh the chart with new data
+                }
+              </script>
+            </div>
+            <div class="col-12 col-md-5 order-0 order-md-1">
+              <canvas style="display: none;" id="sipChart" width="200" height="200"></canvas>
+
+              <img src="https://placehold.co/400x400?text=Your+Ad+Here" class="img-fluid imgsize" />
+
+
+            </div>
+
+
+
+          </div>
+
+          <div class="mt-2 mt-md-3 fullWidthAdset w-100 text-center d-none">
+            <img class="w-100" src="https://placehold.co/1100x100?text=Your+Ad+Here" alt="">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end why section -->
+
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container about-1" data-aos="fade-up">
+      <div class="heading_container heading_center">
+        <h2>
+          About <span>Us</span>
+        </h2>
+        <!-- <p>
+          Magni quod blanditiis non minus sed aut voluptatum illum quisquam aspernatur ullam vel beatae rerum ipsum
+          voluptatibus
+        </p> -->
+      </div>
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="images/finance-about.png" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box box-1 ">
+            <h3>
+              SIP Calculator
+            </h3>
+            <p>
+              We believe that financial planning should be simple and accessible to everyone. Our SIP calculator is
+              designed to help you make informed decisions about your investments, ensuring that you stay on top of your
+              financial goals with minimal effort.
+
+              <hr>
+              With years of expertise in the financial sector, our team understands the importance of making smart,
+              data-driven decisions. That's why we've developed a tool that not only simplifies the investment process
+              but also helps you project your future wealth.
+
+
+            </p>
+            <!-- <p>
+              Molestiae odio earum non qui cumque provident voluptates, repellendus exercitationem, possimus at iste
+              corrupti officiis unde alias eius ducimus reiciendis soluta eveniet. Nobis ullam ab omnis quasi expedita.
+            </p> -->
+            <!-- <a href="">
+              Read More
+            </a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+
+  <!-- service section -->
+
+  <section class="service_section layout_padding">
+    <div class="service_container our-servicer">
+      <div class="container ">
+        <div class="heading_container heading_center" data-aos="fade-up">
+          <h2>
+            Our <span>Services</span>
+          </h2>
+          <!-- <p>
+            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+          </p> -->
+        </div>
+        <div class="row">
+          <div class="col-md-6" data-aos="fade-up">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  SIP Calculator
+                </h5>
+                <p>
+                  A SIP Calculator helps users estimate the future value of their investments based on regular
+                  contributions (monthly, quarterly, etc.) and an assumed rate of return. This can be a valuable tool
+                  for individuals interested in mutual funds or other financial planning options.
+                </p>
+                <!-- <a href="">
+                  Read More
+                </a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" data-aos="fade-up">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Lumpsum Calculator
+                </h5>
+                <p>
+                  Are you planning to invest a one-time amount and want to know how much it will grow over time? Use our
+                  Lumpsum Investment Calculator to easily estimate the future value of your investment based on the
+                  amount you invest, the time period, and the expected return rate.
+
+                </p>
+                <!-- <a href="">
+                  Read More
+                </a> -->
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-4 ">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Expert Support
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                  The
+                  point of using
+                </p>
+                <a href="">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <!-- <div class="btn-box">
+          <a href="">
+            View All
+          </a>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- end service section -->
+
+  <!-- info section -->
+
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6 px-5 info_col">
+          <div class="info_detail">
+            <h4>
+              SIP Calculator
+            </h4>
+            <p>
+              Investing in a Systematic Investment Plan (SIP) is a smart and effective way to build wealth over time.
+              With our SIP Calculator, you can easily plan your investments, estimate future returns, and set realistic
+              financial goals. Start your journey towards financial security today and watch your money grow steadily.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 px-5 mx-auto info_col">
+          <div class="info_link_box">
+            <h4>
+              Links
+            </h4>
+            <div class="info_links">
+              <a class="active" href="index.html">
+                Home
+              </a>
+              <a class="" href="about.html">
+                About
+              </a>
+              <a class="" href="service.html">
+                Services
+              </a>
+
+              <a class="" href="contact us.html">
+                Contact us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <section class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">SIP Calculator</a>
+      </p>
+    </div>
+  </section>
+  <!-- footer section -->
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+  <!-- jQery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- custom js -->
+  <script type="text/javascript" src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <script>
+    AOS.init({
+      offset: 300,
+      duration: 1000
+    });
+  </script>
+
+
+  <!-- End Google Map -->
+
+</body>
+
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+
+    <title> SIP Calculator </title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- //// AOS //////     -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- font awesome style -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+
+    <style>
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 1.8rem !important;
+            text-decoration: none;
+            margin: 0 auto;
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136614031-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-136614031-3');
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "94d2YEBNUqU4SHipq",
+            });
+        })();
+    </script>
+    <style>
+        .bg-primary-50 {
+            background-color: #000000;
+        }
+
+        .c-white {
+            color: #ffffff;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-align-center {
+            align-items: center;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .border1 {
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .br1 {
+            border-radius: 1rem;
+        }
+
+        .p2 {
+            padding: 2rem;
+        }
+
+        .p5 {
+            padding: 5rem;
+        }
+
+        .br05 {
+            border-radius: 0.5rem;
+        }
+
+        .bg-1 {
+            background-color: #01FF66;
+        }
+
+        .fw700 {
+            font-weight: 700;
+        }
+
+        .c-primary {
+            color: #000000;
+        }
+
+        .pr15 {
+            padding-right: 1.5rem;
+        }
+
+        .pl15 {
+            padding-left: 1.5rem;
+        }
+
+        .p1 {
+            padding: 1rem;
+        }
+
+        .cta p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        .textblack {
+            color: #000000 !important;
+        }
+
+        @media (max-width: 600px) {
+            .footer .cta {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .flex-container {
+                flex-direction: column;
+            }
+
+            .footer .cta img {
+                width: 40%;
+            }
+
+            .footer .cta {
+                flex-direction: column;
+            }
+
+            .p5 {
+                padding: 0rem;
+            }
+
+            .pl125 {
+                padding-left: 1.25rem
+            }
+
+            .footer .cta .col-9 p {
+                margin-bottom: 2rem;
+            }
+
+            .pr15 {
+                padding-right: 1.5rem;
+            }
+
+            .pl15 {
+                padding-left: 1.5rem;
+            }
+
+            .p1 {
+                padding: 1rem;
+            }
+
+            .text-nounder {
+                text-decoration: none;
+            }
+
+            .cta h4 {
+                font-size: 1.25rem !important;
+                font-weight: 600;
+            }
+
+            .cta p {
+                font-size: 1rem;
+                line-height: 1.5rem;
+            }
+
+            .br05 {
+                border-radius: 0.5rem;
+            }
+        }
+
+        #sipForm {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .fifty-layout {
+            width: 48%;
+        }
+
+        .abtheading {
+            font-family: "Kanit", sans-serif;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .contact {
+            width: 80%;
+            position: absolute;
+            left: 10%;
+        }
+
+        /* .container-fluid{
+        position: absolute;
+        left: 0%;
+    } */
+
+        .enter-form .ente {
+            background: none;
+            color: white;
+        }
+
+
+        .class span {
+            color: #00bbf0;
+
+
+
+        }
+
+        .class h2 {
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        .class {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 600px;
+            /* background: #000; */
+        }
+
+        .class .enter-form {
+            /* background: #28d0ff2b; */
+            /* background: rgb(65,38,153); */
+
+            background: linear-gradient(140deg, rgba(65, 38, 153, 1) 0%, rgba(35, 18, 89, 1) 51%, rgba(26, 10, 76, 1) 91%);
+            border-top-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            padding: 2rem;
+        }
+
+        .class .enter-form .ente {
+            border-radius: 10px;
+            border: 2px solid rgba(128, 128, 128, 0.51);
+        }
+
+        .heads-1 {
+            padding: 15px 0;
+            /* background: #1A0A4C; */
+            /* background: rgb(38,17,106); */
+            background: linear-gradient(90deg, rgba(38, 17, 106, 1) 0%, rgba(35, 18, 89, 1) 42%, rgba(26, 10, 76, 1) 83%);
+        }
+
+
+
+        .class .submit button,
+        .reset {
+            border: 2px solid #8392ff ;
+            background: none;
+            transition: all 0.5s ease-in;
+        }
+
+        .class .submit button:hover,
+        .reset:hover {
+
+            background: #303ea9;    
+            /* color: #000000; */
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="hero_area-1">
+
+        <div class="hero_bg_box">
+            <!-- <div class="bg_img_box">
+                <img src="images/hero-bg.png" alt="">
+            </div> -->
+        </div>
+
+        <!-- header section strats -->
+        <header class="header_section heads-1" >
+            <div class="container-fluid  ">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="index.html">
+                        <span>
+                            Finexo
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class=""> </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav  ">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="index.html">Home </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html"> About </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="service.html">Services</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="contact us.html">contact us <span
+                                        class="sr-only">(current)</span> </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- end header section -->
+    </div>
+
+    <section class="about_section layout_padding">
+        <div class="container  about" data-aos="fade-up">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="img-box">
+                        <img src="images/contact.svg" alt="">
+                    </div>
+                </div>
+
+                <!-- <div class="container-fluid mt-md-5 mx-auto my-5  " style="max-width: 90%;"> -->
+
+
+                <div class="row customCalcWidth mx-auto">
+
+                    <div class="class">
+
+                        <h2>Contact <span>Us</span> </h2>
+
+                        <div class="col-md-12 p-5">
+
+                            <form class="enter-form">
+                                <label for="name">Your Name</label>
+                                <input name="name" id="name" class="form-control mb-3  ente" type="text"
+                                    placeholder="Name">
+                                <label for="name">E-Mail <span>*</span></label>
+                                <input name="email" id="email" class="form-control mb-3 ente" type="email"
+                                    placeholder="Email">
+
+                                <label for="name">WhatsApp Number</label>
+                                <input name="number" id="number" class="form-control mb-3 ente" type="tel"
+                                    placeholder="+91">
+
+                                <label for="name">Your Query</label>
+                                <textarea name="query" id="query" class="form-control mb-3 ente"
+                                    placeholder="Query"></textarea>
+                                <div class="centerMiddle submit">
+
+                                    <button class="btn btn-primary btncheck mx-auto" onclick="sendEmail()" type="submit"
+                                        value="Submit">
+                                        Submit </button>
+                                    <input class="btn btn-primary btncheck mx-auto reset" type="reset" value="Reset">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .hr{
+            background-color: rgb(63, 70, 161);
+            padding:0;
+            margin: 0;
+        }
+    </style>
+
+    <hr class="hr">
+    <section class=
+    "info_section layout_padding2">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 px-5 info_col">
+                    <div class="info_detail">
+                        <h4>
+                          SIP Calculator
+                        </h4>
+                        <p>
+                            Investing in a Systematic Investment Plan (SIP) is a smart and effective way to build wealth over time.
+                            With our SIP Calculator, you can easily plan your investments, estimate future returns, and set realistic
+                            financial goals. Start your journey towards financial security today and watch your money grow steadily.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 px-5 mx-auto info_col">
+                    <div class="info_link_box">
+                        <h4>
+                            Links
+                        </h4>
+                        <div class="info_links">
+                            <a class="active" href="index.html">
+                                Home
+                            </a>
+                            <a class="" href="about.html">
+                                About
+                            </a>
+                            <a class="" href="service.html">
+                                Services
+                            </a>
+
+                            <a class="" href="contact us.html">
+                                Contact us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer section -->
+    <section class="footer_section">
+        <div class="container">
+            <p>
+                &copy; <span id="displayYear"></span> All Rights Reserved By
+                <a href="https://html.design/">SIP Calculator</a>
+            </p>
+        </div>
+    </section>
+
+
+
+    <!-- <div class="container text-right">
+        <img src="https://placehold.co/728x90?text=Your+Ad+Here" alt="">
+    </div> -->
+
+    <!-- <div class="clearfix"></div> -->
+
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .contact-1 h4 {
+            font-size: 70px;
+        }
+
+        .contact-1 span {
+            color: #00bbf0;
+
+        }
+
+        .customCalcWidth {
+            width: 50%;
+        }
+
+        @media(max-width:767px) {
+            .customCalcWidth {
+                width: 100%;
+            }
+        }
+
+        .centerMiddle {
+            text-align: left;
+        }
+
+        @media(max-width:767px) {
+            .centerMiddle {
+                text-align: center;
+            }
+        }
+    </style>
+
+    <!-- <div class="bsnav-mobile">
+        <div class="bsnav-mobile-overlay"></div>
+        <div class="navbar">
+            <div class="masterbarmobile"></div>
+        </div>
+    </div> -->
+
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var Page_Validators = new Array(document.getElementById("pageContent_RegularExpressionValidator1"));
+        //]]>
+    </script>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var Page_Validators = new Array(document.getElementById("pageContent_RegularExpressionValidator1"));
+        //]]>
+    </script>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.2/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <script src="/Calculators/js/bsnav.min.js"></script>
+
+    <script>
+        AOS.init();
+        $('.navbar-toggler').click(function () {
+            $('.bsnav-mobile .navbar .masterbarmobile').html($(".masterbar").html());
+        });
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        iSntegrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/4.1.0/autoNumeric.min.js"></script>
+
+
+    <script>
+        AOS.init();
+      </script>
+    
+      <script>
+        AOS.init({
+          offset: 300,
+          duration: 1000
+        });
+      </script>
+
+
+</body>
+
+</html>
